@@ -1,0 +1,132 @@
+#include "RayTracing.h"
+
+#include <iostream>
+#include <assert.h>
+
+#include "Device.h"
+
+#include "length_cm.h"
+
+using std::cout;
+using std::endl;
+
+/*----------------------------------------------------------------------*\
+ |*			Declaration 					*|
+ \*---------------------------------------------------------------------*/
+
+/*--------------------------------------*\
+ |*		Imported	 	*|
+ \*-------------------------------------*/
+extern __global__ void raytracing_GM(Sphere* ptrDevTabSphere, int nbSphere, uchar4* ptrDevPixels, uint w, uint h, float t);
+extern __global__ void raytracing_CM(uchar4* ptrDevPixels, uint w, uint h, float t);
+
+extern __host__ void uploadGPU(Sphere* tabValue);
+
+/*--------------------------------------*\
+ |*		Public			*|
+ \*-------------------------------------*/
+
+/*--------------------------------------*\
+ |*		Private			*|
+ \*-------------------------------------*/
+
+/*----------------------------------------------------------------------*\
+ |*			Implementation 					*|
+ \*---------------------------------------------------------------------*/
+
+/*--------------------------------------*\
+ |*		Public			*|
+ \*-------------------------------------*/
+
+/*-------------------------*\
+ |*	Constructeur	    *|
+ \*-------------------------*/
+
+RayTracing::RayTracing(const Grid& grid, uint w, uint h, float dt) :
+	Animable_I<uchar4>(grid, w, h, "RayTracing_Cuda_RGBA_uchar4")
+    {
+    assert(w == h); // specific RayTracing
+    cout << "test" << endl;
+    // Inputs
+    this->dt = dt;
+
+    // Tools
+    this->t = 0; // protected dans Animable
+    this->nbSphere = LENGTH_CM;
+
+    this->sizeOctet = nbSphere * sizeof(Sphere);
+    cout << "test";
+    SphereCreator sphereCreator(nbSphere, w, h); // declared on the stack
+    Sphere* ptrTabSphere = sphereCreator.getTabSphere();
+    cout << "test";
+    fillGM(ptrTabSphere);
+    //fillCM(ptrTabSphere);
+
+    }
+
+RayTracing::~RayTracing()
+    {
+    // not nothing this time
+    Device::free(ptrDevTabSphere);
+    }
+
+/*-------------------------*\
+ |*	Methode		    *|
+ \*-------------------------*/
+
+/**
+ * Override
+ * Call periodicly by the API
+ *
+ * Note : domaineMath pas use car pas zoomable
+ */
+void RayTracing::process(uchar4* ptrDevPixels, uint w, uint h, const DomaineMath& domaineMath)
+    {
+    Device::lastCudaError("raytracing rgba uchar4 (before kernel)"); // facultatif, for debug only, remove for release
+    static int i = 0;
+
+    if (i == 0)
+	{
+	raytracing_GM<<<dg, db>>>(ptrDevTabSphere, nbSphere, ptrDevPixels, w, h, t);
+	}
+    else if (i == 1)
+	{
+	raytracing_CM<<<dg, db>>>(ptrDevPixels, w, h, t);
+	}
+    else if (i == 2)
+	{
+
+	}
+
+    Device::lastCudaError("raytracing rgba uchar4 (after kernel)"); // facultatif, for debug only, remove for release
+    }
+
+void RayTracing::fillGM(Sphere* ptrTabSphere)
+    {
+    Device::malloc(&ptrDevTabSphere, sizeOctet);
+    Device::memclear(ptrDevTabSphere, sizeOctet);
+    Device::memcpyHToD(ptrDevTabSphere, ptrTabSphere, sizeOctet);
+    }
+
+void RayTracing::fillCM(Sphere* ptrTabSphere)
+    {
+    uploadGPU(ptrTabSphere);
+    }
+
+/**
+ * Override
+ * Call periodicly by the API
+ */
+void RayTracing::animationStep()
+    {
+    t += dt;
+    }
+
+/*--------------------------------------*\
+ |*		Private			*|
+ \*-------------------------------------*/
+
+/*----------------------------------------------------------------------*\
+ |*			End	 					*|
+ \*---------------------------------------------------------------------*/
+
