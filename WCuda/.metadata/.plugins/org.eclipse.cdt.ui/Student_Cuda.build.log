@@ -1,4 +1,4 @@
-17:52:03 **** Incremental Build of configuration CudaGCC_parallel for project Student_Cuda ****
+14:28:51 **** Incremental Build of configuration CudaGCC_parallel for project Student_Cuda ****
 cbicc cuda jall 
 
 --------------------------------------------------------
@@ -129,6 +129,7 @@ Cuda compilation tools, release 8.0, V8.0.44
 [CBI] -> INC_PATH (auto detect):
 [CBI] ->              : src/cpp/core/02_Hello_add_vector/00_tools/
 [CBI] ->              : src/cpp/core/02_Hello_add_vector/01_objet/host/
+[CBI] ->              : src/cpp/core/03_Slice/host/
 [CBI] ->              : src/cpp/test/junit/01_Test_Hello/
 [CBI] ->              : src/cpp/test/junit/02_Test_Vector/
 
@@ -240,18 +241,39 @@ Cuda compilation tools, release 8.0, V8.0.44
 [CBI] ->              : nvrtc
 [CBI] ->              : nvrtc-builtins
 
+[CBI] -> Create folder : /tmp/ramdrive/arc25/Targets/Student_Cuda/bin
+[CBI] -> Create folder : /tmp/ramdrive/arc25/Targets/Student_Cuda/obj
+[CBI] -> Create folder : /tmp/ramdrive/arc25/Targets/Student_Cuda/cubin
 
 [CBI] -> Compilation parallel (16 threads)
 
-make[1]: Nothing to be done for `compilelink'.
+[Student_Cuda_cuda_80_x86_64] -> g++ compiling .cpp : src/cpp/main.cpp
+[Student_Cuda_cuda_80_x86_64] -> g++ compiling .cpp : src/cpp/test/mainTest.cpp
+[Student_Cuda_cuda_80_x86_64] -> g++ compiling .cpp : src/cpp/test/junit/01_Test_Hello/TestHello.cpp
+[Student_Cuda_cuda_80_x86_64] -> g++ compiling .cpp : src/cpp/test/junit/02_Test_Vector/TestVector.cpp
+[Student_Cuda_cuda_80_x86_64] -> g++ compiling .cpp : src/cpp/core/mainCore.cpp
+[Student_Cuda_cuda_80_x86_64] -> g++ compiling .cpp : src/cpp/core/02_Hello_add_vector/00_tools/VectorTools.cpp
+[Student_Cuda_cuda_80_x86_64] -> g++ compiling .cpp : src/cpp/core/02_Hello_add_vector/01_objet/useAddVector.cpp
+[Student_Cuda_cuda_80_x86_64] -> g++ compiling .cpp : src/cpp/core/01_Hello/useHello.cpp
+[Student_Cuda_cuda_80_x86_64] -> g++ compiling .cpp : src/cpp/core/03_Slice/useSlice.cpp
+[Student_Cuda_cuda_80_x86_64] -> nvcc compiling .cu : src/cpp/core/02_Hello_add_vector/01_objet/device/addVector_device.cu
+[Student_Cuda_cuda_80_x86_64] -> nvcc compiling .cu : src/cpp/core/02_Hello_add_vector/01_objet/host/AddVector.cu
+[Student_Cuda_cuda_80_x86_64] -> nvcc compiling .cu : src/cpp/core/01_Hello/01_helloCuda.cu
+[Student_Cuda_cuda_80_x86_64] -> nvcc compiling .cu : src/cpp/core/01_Hello/02_hello_add.cu
+[Student_Cuda_cuda_80_x86_64] -> nvcc compiling .cu : src/cpp/core/03_Slice/device/SliceDevice.cu
+[Student_Cuda_cuda_80_x86_64] -> nvcc compiling .cu : src/cpp/core/03_Slice/host/Slice.cu
+/opt/api/cbi/tools/bilat_tools_cuda/303_006/INC/cudatools/header/device/reduction/reductionADD.h(1): error: "#" not expected here
 
-[CBI] -> Deploying      : ../RELEASE/bin/Student_Cuda_cuda_80_x86_64.run
+/opt/api/cbi/tools/bilat_tools_cuda/303_006/INC/cudatools/header/device/reduction/reductionADD.h(1): error: this declaration has no storage class or type specifier
 
-[CBI] -> Symlink Project Inc
-[CBI] -> To update code completion : ctrl-shift-s   or   gui/index/rebuild
+/opt/api/cbi/tools/bilat_tools_cuda/303_006/INC/cudatools/header/device/reduction/reductionADD.h(1): error: expected a ";"
 
-[CBI] -> Student_Cuda_cuda_80_x86_64 : End ALL!
+/opt/api/cbi/tools/bilat_tools_cuda/303_006/INC/cudatools/header/device/reduction/reductionADD.h(26): warning: parsing restarts here after previous syntax error
 
+3 errors detected in the compilation of "/tmp/tmpxft_00002902_00000000-7_SliceDevice.cpp1.ii".
+make[1]: *** [/tmp/ramdrive/arc25/Targets/Student_Cuda/obj/SliceDevice.o] Error 2
+make[1]: *** Waiting for unfinished jobs....
+make: *** [jall] Error 2
 
-17:52:03 Build Finished (took 368ms)
+14:28:53 Build Finished (took 2s.572ms)
 

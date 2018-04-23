@@ -68,9 +68,9 @@ __host__ void uploadGPU(Sphere * tabSphere)
     HANDLE_ERROR(cudaMemcpyToSymbol(TAB_CM, tabSphere, size, offset, cudaMemcpyHostToDevice));
     }
 
-__device__ void work(Sphere* ptrDevTabSphere, int nbSphere, uchar4* ptrDevPixels, uint w, uint h, float t)
+__device__ void work(Sphere* ptrDevTabSphere, uint nbSphere, uchar4* ptrDevPixels, uint w, uint h, float t)
     {
-    RayTracingMath rayTracingMath = RayTracingMath(nbSphere, ptrDevTabSphere);
+    RayTracingMath rayTracingMath = RayTracingMath(ptrDevTabSphere, nbSphere);
 
     const int TID = Indice2D::tid();
     const int NB_THREAD = Indice2D::nbThread();

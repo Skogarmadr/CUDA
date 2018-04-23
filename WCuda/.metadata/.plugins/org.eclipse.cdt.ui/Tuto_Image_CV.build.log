@@ -1,4 +1,4 @@
-17:52:08 **** Incremental Build of configuration GCC_parallel for project Tuto_Image_CV ****
+12:59:13 **** Incremental Build of configuration GCC_parallel for project Tuto_Image_CV ****
 cbicc gcc jall 
 
 --------------------------------------------------------
@@ -232,10 +232,69 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 [CBI] ->              : opencv_videoio_gcc484
 [CBI] ->              : opencv_videostab_gcc484
 
+[CBI] -> Create folder : /tmp/ramdrive/arc25/Targets/Tuto_Image_CV/bin
+[CBI] -> Create folder : /tmp/ramdrive/arc25/Targets/Tuto_Image_CV/obj
 
 [CBI] -> Compilation parallel (16 threads)
 
-make[1]: Nothing to be done for `compilelink'.
+[Tuto_Image_CV_gcc_x86_64] -> g++ compiling .cpp : src/main.cpp
+[Tuto_Image_CV_gcc_x86_64] -> g++ compiling .cpp : src/core/mainAnimable.cpp
+[Tuto_Image_CV_gcc_x86_64] -> g++ compiling .cpp : src/core/mainImage.cpp
+[Tuto_Image_CV_gcc_x86_64] -> g++ compiling .cpp : src/core/imageVideo/01_animable/ImageVideo.cpp
+[Tuto_Image_CV_gcc_x86_64] -> g++ compiling .cpp : src/core/imageVideo/02_Provider/ImageVideoProvider.cpp
+
+[CBI] -> Linking to   : /tmp/ramdrive/arc25/Targets/Tuto_Image_CV/bin/Tuto_Image_CV_gcc_x86_64.run
+
+[CBI] -> Library Link :
+[CBI] ->              : -lBilatTools_CPP_303_006_gcc_x86_64
+[CBI] ->              : -lBilatTools_Image_303_006_gcc_x86_64
+[CBI] ->              : -lBilatTools_Image_OpenCV_303_006_gcc_x86_64
+[CBI] ->              : -lBilatTools_OMP_303_006_gcc_x86_64
+[CBI] ->              : -lBilatTools_OpenCV_303_006_gcc_x86_64
+[CBI] ->              : -lBilat_Fenetrage_Displayable_303_gcc_x86_64
+[CBI] ->              : -lBilat_Fenetrage_Displayable_GL_303_gcc_x86_64
+[CBI] ->              : -lBilat_Fenetrage_FreeGlut_Tools_303_gcc_x86_64
+[CBI] ->              : -lBilat_Image_FreeGlut_303_gcc_x86_64
+[CBI] ->              : -lBilat_Image_GL_303_gcc_x86_64
+[CBI] ->              : -lBilat_OpenGL_Tools_303_gcc_x86_64
+[CBI] ->              : -lGL
+[CBI] ->              : -lGLEW
+[CBI] ->              : -lGLU
+[CBI] ->              : -lglut
+[CBI] ->              : -lgomp
+[CBI] ->              : -lopencv_calib3d_gcc484
+[CBI] ->              : -lopencv_core_gcc484
+[CBI] ->              : -lopencv_dnn_gcc484
+[CBI] ->              : -lopencv_features2d_gcc484
+[CBI] ->              : -lopencv_flann_gcc484
+[CBI] ->              : -lopencv_highgui_gcc484
+[CBI] ->              : -lopencv_imgcodecs_gcc484
+[CBI] ->              : -lopencv_imgproc_gcc484
+[CBI] ->              : -lopencv_ml_gcc484
+[CBI] ->              : -lopencv_objdetect_gcc484
+[CBI] ->              : -lopencv_photo_gcc484
+[CBI] ->              : -lopencv_shape_gcc484
+[CBI] ->              : -lopencv_stitching_gcc484
+[CBI] ->              : -lopencv_superres_gcc484
+[CBI] ->              : -lopencv_video_gcc484
+[CBI] ->              : -lopencv_videoio_gcc484
+[CBI] ->              : -lopencv_videostab_gcc484
+
+==================================================================================
+[CBI] -> Target Name  : Tuto_Image_CV_gcc_x86_64
+[CBI] -> Location     : /tmp/ramdrive/arc25/Targets/Tuto_Image_CV/bin/Tuto_Image_CV_gcc_x86_64.run
+[CBI] -> Deploy 	  : ../RELEASE/bin
+[CBI] ->
+[CBI] -> Type	 	  : EXE
+[CBI] -> Arch	 	  : x86_64
+[CBI] -> OS	 		  : Linux
+[CBI] -> User	 	  : arc25
+[CBI] ->
+[CBI] -> Compilateur  : g++
+[CBI] -> Task	      : End Compiling-Linking !
+[CBI] -> Time		  : 3 (s)
+==================================================================================
+
 
 [CBI] -> Deploying    : ../RELEASE/bin/Tuto_Image_CV_gcc_x86_64.run
 
@@ -245,5 +304,5 @@ make[1]: Nothing to be done for `compilelink'.
 [CBI] -> Tuto_Image_CV_gcc_x86_64 : End ALL!
 
 
-17:52:08 Build Finished (took 262ms)
+12:59:16 Build Finished (took 2s.571ms)
 

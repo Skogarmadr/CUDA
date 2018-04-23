@@ -13,12 +13,15 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="RayTracing" key="selection"/>
+		<item value="" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="AddVector"/>
+			<item value="useAddVecteur"/>
+			<item value="RipplingMath"/>
 			<item value="§"/>
 			<item value="Rippling"/>
 			<item value="RaytracingMath"/>
@@ -31,11 +34,11 @@
 			<item value="n"/>
 			<item value="calibreur"/>
 			<item value="mallaoc"/>
-			<item value="memclear"/>
-			<item value="384"/>
-			<item value="TARGET_OBJ_PATH"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Slice"/>
+			<item value="useSlice"/>
+			<item value="SliceMath"/>
 			<item value="RayTracing"/>
 			<item value="RayTracingMath"/>
 			<item value="Raytracing"/>
@@ -53,7 +56,7 @@
 		<item value="344" key="DIALOG_WIDTH"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 		<item value="445" key="DIALOG_HEIGHT"/>
-		<item value="157" key="DIALOG_Y_ORIGIN"/>
-		<item value="600" key="DIALOG_X_ORIGIN"/>
+		<item value="362" key="DIALOG_Y_ORIGIN"/>
+		<item value="497" key="DIALOG_X_ORIGIN"/>
 	</section>
 </section>

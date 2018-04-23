@@ -1,4 +1,4 @@
-17:52:11 **** Incremental Build of configuration CudaGCC_parallel for project Tuto_Image_Cuda_3D ****
+13:09:32 **** Incremental Build of configuration CudaGCC_parallel for project Tuto_Image_Cuda_3D ****
 cbicc cuda jall 
 
 --------------------------------------------------------
@@ -410,109 +410,13 @@ Cuda compilation tools, release 8.0, V8.0.44
 
 [CBI] -> Compilation parallel (16 threads)
 
-[Tuto_Image_Cuda_3D_cuda_80_x86_64] -> nvcc compiling .cu : ../Tuto_Image_Cuda/src/core/01_simple_RGBA_uchar4/01_Vague/01_animable/device/vagueDevice.cu
+[Tuto_Image_Cuda_3D_cuda_80_x86_64] -> g++ compiling .cpp : src/cpp/core/scene/SceneCubeCreator.cpp
+src/cpp/core/scene/SceneCubeCreator.cpp:13:32: fatal error: MandelbrotProvider.h: No such file or directory
+ #include "MandelbrotProvider.h"
+                                ^
+compilation terminated.
+make[1]: *** [/tmp/ramdrive/arc25/Targets/Tuto_Image_Cuda_3D/obj/SceneCubeCreator.o] Error 1
+make: *** [jall] Error 2
 
-[CBI] -> Linking to   : /tmp/ramdrive/arc25/Targets/Tuto_Image_Cuda_3D/bin/Tuto_Image_Cuda_3D_cuda_80_x86_64.run
-
-[CBI] -> Library Link :
-[CBI] ->
-[CBI] ->              : -lBilatTools_CPP_303_006_gcc_x86_64
-[CBI] ->              : -lBilatTools_Cuda_303_006_cuda_80_x86_64
-[CBI] ->              : -lBilatTools_Cuda_3D_303_006_cuda_80_x86_64
-[CBI] ->              : -lBilatTools_Cuda_Image_303_006_cuda_80_x86_64
-[CBI] ->              : -lBilatTools_Image_OpenCV_Cuda_303_006_cuda_80_x86_64
-[CBI] ->              : -lBilatTools_OMP_303_006_gcc_x86_64
-[CBI] ->              : -lBilatTools_OpenCV_303_006_gcc_x86_64
-[CBI] ->              : -lBilat_Fenetrage_Displayable_303_gcc_x86_64
-[CBI] ->              : -lBilat_Fenetrage_Displayable_GL_303_gcc_x86_64
-[CBI] ->              : -lBilat_Fenetrage_FreeGlut_Tools_303_gcc_x86_64
-[CBI] ->              : -lBilat_Image_FreeGlut_303_gcc_x86_64
-[CBI] ->              : -lBilat_Image_FreeGlut_Cuda_303_cuda_80_x86_64
-[CBI] ->              : -lBilat_Image_GL_303_gcc_x86_64
-[CBI] ->              : -lBilat_Image_GL_Cuda_303_cuda_80_x86_64
-[CBI] ->              : -lBilat_OpenGL_Tools_303_gcc_x86_64
-[CBI] ->              : -lBilat_OpenGL_Tools_Cuda_303_cuda_80_x86_64
-[CBI] ->              : -lBilat_Scene3D_FreeGlut_303_gcc_x86_64
-[CBI] ->              : -lBilat_Scene3D_GL_303_gcc_x86_64
-[CBI] ->              : -lBilat_Scene3D_GL_Cuda_303_cuda_80_x86_64
-[CBI] ->              : -lBilat_Surface_GL_303_gcc_x86_64
-[CBI] ->              : -lBilat_Surface_GL_Cuda_303_cuda_80_x86_64
-[CBI] ->              : -lGL
-[CBI] ->              : -lGLEW
-[CBI] ->              : -lGLU
-[CBI] ->              : -lOpenCL
-[CBI] ->              : -lcublas
-[CBI] ->              : -lcuda
-[CBI] ->              : -lcudart
-[CBI] ->              : -lcufft
-[CBI] ->              : -lcufftw
-[CBI] ->              : -lcuinj64
-[CBI] ->              : -lcurand
-[CBI] ->              : -lcusolver
-[CBI] ->              : -lcusparse
-[CBI] ->              : -lglut
-[CBI] ->              : -lgomp
-[CBI] ->              : -lnppc
-[CBI] ->              : -lnppi
-[CBI] ->              : -lnppial
-[CBI] ->              : -lnppicc
-[CBI] ->              : -lnppicom
-[CBI] ->              : -lnppidei
-[CBI] ->              : -lnppif
-[CBI] ->              : -lnppig
-[CBI] ->              : -lnppim
-[CBI] ->              : -lnppist
-[CBI] ->              : -lnppisu
-[CBI] ->              : -lnppitc
-[CBI] ->              : -lnpps
-[CBI] ->              : -lnvToolsExt
-[CBI] ->              : -lnvblas
-[CBI] ->              : -lnvgraph
-[CBI] ->              : -lnvidia-ml
-[CBI] ->              : -lnvrtc
-[CBI] ->              : -lnvrtc-builtins
-[CBI] ->              : -lopencv_calib3d_gcc484
-[CBI] ->              : -lopencv_core_gcc484
-[CBI] ->              : -lopencv_dnn_gcc484
-[CBI] ->              : -lopencv_features2d_gcc484
-[CBI] ->              : -lopencv_flann_gcc484
-[CBI] ->              : -lopencv_highgui_gcc484
-[CBI] ->              : -lopencv_imgcodecs_gcc484
-[CBI] ->              : -lopencv_imgproc_gcc484
-[CBI] ->              : -lopencv_ml_gcc484
-[CBI] ->              : -lopencv_objdetect_gcc484
-[CBI] ->              : -lopencv_photo_gcc484
-[CBI] ->              : -lopencv_shape_gcc484
-[CBI] ->              : -lopencv_stitching_gcc484
-[CBI] ->              : -lopencv_superres_gcc484
-[CBI] ->              : -lopencv_video_gcc484
-[CBI] ->              : -lopencv_videoio_gcc484
-[CBI] ->              : -lopencv_videostab_gcc484
-
-
-==================================================================================
-[CBI] -> Target Name  : Tuto_Image_Cuda_3D_cuda_80_x86_64
-[CBI] -> Location     : /tmp/ramdrive/arc25/Targets/Tuto_Image_Cuda_3D/bin/Tuto_Image_Cuda_3D_cuda_80_x86_64.run
-[CBI] -> Deploy 	  : ../RELEASE/bin
-[CBI] ->
-[CBI] -> Type	 	  : EXE
-[CBI] -> Arch	 	  : x86_64
-[CBI] -> OS	 	      : Linux
-[CBI] -> User	 	  : arc25
-[CBI] ->
-[CBI] -> Compilateur  : g++ && nvcc
-[CBI] -> Task		  : End Compiling-Linking !
-[CBI] -> Time		  : 2 (s)
-==================================================================================
-
-
-[CBI] -> Deploying      : ../RELEASE/bin/Tuto_Image_Cuda_3D_cuda_80_x86_64.run
-
-[CBI] -> Symlink Project Inc
-[CBI] -> To update code completion : ctrl-shift-s   or   gui/index/rebuild
-
-[CBI] -> Tuto_Image_Cuda_3D_cuda_80_x86_64 : End ALL!
-
-
-17:52:15 Build Finished (took 3s.767ms)
+13:09:35 Build Finished (took 2s.280ms)
 

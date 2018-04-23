@@ -35,7 +35,7 @@ class RayTracingMath
 	// constructeur copie automatique car pas pointeur dans VagueMath
 
 	__device__
-	         virtual ~RayTracingMath()
+	          virtual ~RayTracingMath()
 	    {
 	    // rien
 	    }
@@ -47,48 +47,40 @@ class RayTracingMath
     public:
 
 	__device__
-	void colorIJ(uchar4* ptrColor, int i, int j, float t)
+	void colorIJ(uchar4* ptrColor, float i, float j, float t)
 	    {
-
-	    float min = 1000.f;
-	    float hueMin = -1000.f;
-	    float brightnessMin = -1000.f;
-
-	    float2 position;
-	    position.x = i;
-	    position.y = j;
-
-	    for (int i = 0; i < this->nbSphere; i++)
+	    float dz, minDz, distance;
+	    float2 hCarre;
+	    int minIndex = -1;
+	    float minDistance = 3.4028235E38f;
+	    for (uint index = 0; index < nbSphere; index++)
 		{
-		Sphere sphere = this->ptrDevTabSphere[i];
-		float hCarre = sphere.hCarre(position);
-
-		if (sphere.isEnDessous(hCarre))
+		Sphere s = ptrDevTabSphere[index];
+		hCarre = s.hCarre(i);
+		if (s.isEnDessous(hCarre))
 		    {
-		    float dz = sphere.dz(hCarre);
-		    float distance = sphere.distance(dz);
-
-		    if (distance < min)
+		    dz = s.dz(hCarre);
+		    distance = s.distance(dz);
+		    if (distance < minDistance)
 			{
-			min = distance;
-			hueMin = sphere.hue(t);
-			brightnessMin = sphere.brightness(dz);
+			minDistance = distance;
+			minDz = dz;
+			minIndex = index;
 			}
 		    }
 		}
-
-	    if (hueMin >= 0)
+	    if (minIndex != -1)
 		{
-		ColorTools::HSB_TO_RVB(hueMin, 1.f, brightnessMin, ptrColor);
+		Sphere s = ptrDevTabSphere[minIndex];
+		ColorTools::HSB_TO_RVB(s.hue(t), 1.f, s.brightness(minDz), ptrColor);
 		}
-	    else
+	    else // Si le point n'est pas sous une sphere => noir
 		{
-		ptrColor->x = 125;
-		ptrColor->y = 125;
-		ptrColor->z = 125;
+		ptrColor->x = 0;
+		ptrColor->y = 0;
+		ptrColor->z = 0;
+		ptrColor->w = 255;
 		}
-
-	    ptrColor->w = 255;
 	    }
 
 	/*--------------------------------------*\

@@ -1,0 +1,1 @@
+/home/arc25/CUDA/toStudent/code/WCuda/Student_Cuda_Demo_3D//../Tuto_Image_Cuda/src/core/01_simple_RGBA_uchar4/01_Vague/02_provider/VagueProvider.h
