@@ -2,6 +2,9 @@
 #include "LimitsTools.h"
 #include "Grid.h"
 #include "Device.h"
+#include "Chrono.h"
+#include "limits.h"
+#include "MathTools.h"
 
 using std::cout;
 using std::endl;
@@ -36,49 +39,37 @@ bool useMontecarlo(void);
 
 bool useMontecarlo(void)
     {
-    cout << "use" << endl;
-    int nbSlice = 1000;
+    cout << "start" << endl;
     bool isOk = true;
+    float result;
+    long nbDartTot = INT_MAX;
 
-    // Partie interessante GPGPU
-	{
-	// Grid cuda
-//	int mp = Device::getMPCount();
-//	int coreMP = Device::getCoreCountMP();
+    cout << "GPU" << endl;
+    cout << "grid" << endl;
 
-//	dim3 dg = dim3(mp, 2, 1);  		// disons, a optimiser selon le gpu, peut drastiqument ameliorer ou baisser les performances
-//	dim3 db = dim3(coreMP, 2, 1);   	// disons, a optimiser selon le gpu, peut drastiqument ameliorer ou baisser les performances
-//	Grid grid(dg, db);
+    dim3 dg = dim3(512, 1, 1);
+    dim3 db = dim3(512, 1, 1);
 
-// pattern 1-1, contraintre le produit ne doit pas dépasser les 1024
-//nb de thread est le produit des 6 chiffres, le produit >= n
-	cout << "GPU" << endl;
-	int mp = Device::getMPCount();
-	int coreMP = Device::getCoreCountMP();
+    Grid grid(dg, db);
 
-	cout << "grid" << endl;
+    cout << "Montecarlo" << endl;
 
-	dim3 dg = dim3(mp, 1, 1);
-	dim3 db = dim3(coreMp, 1, 1);
+    Chrono chrono = Chrono("Time:");
 
-	Grid grid(dg, db);
+    Montecarlo montecarlo(grid, nbDartTot);
 
-	cout << "slice" << endl;
+    cout << "befoire montecarlo run" << endl;
+    chrono.start();
+    montecarlo.run();
+    chrono.stop();
+    cout << "after montecarlo run" << endl;
+    result = montecarlo.getResult();
+    chrono.print();
+    printf("\nresult = %f", result);
 
-	Slice slice(grid, nbSlice);
-
-	cout << "befoire slice run" << endl;
-
-	slice.run();
-
-	cout << "after slice run" << endl;
-
-	printf("result %f", slice.getResult());
-
-	}
-
-    cout << "use end" << endl;
+    cout << "\n end" << endl;
     return isOk;
+
     }
 
 /*--------------------------------------*\
