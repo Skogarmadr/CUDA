@@ -40,8 +40,8 @@ MontecarloMultiGPU::MontecarloMultiGPU(const Grid& grid, int nbDartTotal) :
     {
 
     this->result = 0.0;
-    this->nbDartByDevice = INT_MAX;
-    this->nbDartTotal = Device::getDeviceCount() * nbDartByDevice;
+    this->nbDartTotal = INT_MAX;
+    this->nbDartByDevice = nbDartTotal / Device::getDeviceCount();
 
     }
 
@@ -67,8 +67,8 @@ void MontecarloMultiGPU::run()
 	Montecarlo montecarlo(grid, nbDartByDevice);
 	montecarlo.run();
 	sum += montecarlo.getNbDartUnderCurve();
-	cout << sum << endl;
-	cout << nbDartTotal << endl;
+	//cout << sum << endl;
+	//cout << nbDartTotal << endl;
 
 	}
 	result = 4.0 * sum / nbDartTotal;
